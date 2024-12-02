@@ -1,0 +1,11 @@
+POST http://spacefaultier.de:8080/api/users
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+
+###
+GET http://spacefaultier.de:8080/api/users
