@@ -11,7 +11,7 @@ func GetAbgeordnete() []Abgeordnete {
 	// Loop through rows, using Scan to assign column data to struct fields.
 	for rows.Next() {
 		var abgeordneter Abgeordnete
-		err := rows.Scan(&abgeordneter.ID, &abgeordneter.Name, &abgeordneter.Partei)
+		err := rows.Scan(&abgeordneter.ID, &abgeordneter.Name, &abgeordneter.Partei, &abgeordneter.Bio)
 		if err != nil {
 			panic(err)
 		}
@@ -31,7 +31,7 @@ func AbgeordneterById(id int64) Abgeordnete {
 
 	defer rows.Close()
 	rows.Next()
-	err = rows.Scan(&abgeordnete.ID, &abgeordnete.Name, &abgeordnete.Partei)
+	err = rows.Scan(&abgeordnete.ID, &abgeordnete.Name, &abgeordnete.Partei, &abgeordnete.Bio)
 
 	if err != nil {
 		panic(err)
@@ -42,7 +42,7 @@ func AbgeordneterById(id int64) Abgeordnete {
 
 func PutAbgeordneter(abgeordneter Abgeordnete_put) {
 
-	rows, err := db.Query("INSERT INTO Abgeordnete (name,partei) VALUES (?,?)", abgeordneter.Name, abgeordneter.Partei)
+	rows, err := db.Query("INSERT INTO Abgeordnete (name,partei,bio) VALUES (?,?,?)", abgeordneter.Name, abgeordneter.Partei, abgeordneter.Bio)
 
 	if err != nil {
 		panic(err)
@@ -61,7 +61,7 @@ func GetAbgeordneteVote(id int64) AbgeordneteVote {
 
 	defer rows.Close()
 	rows.Next()
-	err = rows.Scan(&abgeordnete.ID, &abgeordnete.Name, &abgeordnete.Partei)
+	err = rows.Scan(&abgeordnete.ID, &abgeordnete.Name, &abgeordnete.Partei, &abgeordnete.Bio)
 
 	if err != nil {
 		panic(err)

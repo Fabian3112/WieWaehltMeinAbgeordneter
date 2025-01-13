@@ -15,29 +15,38 @@ type Abgeordnete struct {
 	ID     int64  `json:"id"`
 	Name   string `json:"name"`
 	Partei string `json:"patei"`
+	Bio    string `json:"bio"`
 }
 
 type Abgeordnete_put struct {
 	Name   string `json:"name"`
 	Partei string `json:"partei"`
+	Bio    string `json:"bio"`
 }
 
 type AbgeordneteVote struct {
 	ID           int64        `json:"id"`
 	Name         string       `json:"name"`
 	Partei       string       `json:"patei"`
+	Bio          string       `json:"bio"`
 	Abstimmungen []Abstimmung `json:abstimmungen`
 }
 
 type Gesetz struct {
-	ID    int64  `json:"id"`
-	Titel string `json:"titel"`
-	Date  string `json:"date"`
+	ID          int64  `json:"id"`
+	Titel       string `json:"titel"`
+	Date        string `json:"date"`
+	Topic       string `json:"topic"`
+	Description string `json:"description"`
+	Details     string `json:"details"`
 }
 
 type Gesetz_put struct {
-	Titel string `json:"titel"`
-	Date  string `json:"date"`
+	Titel       string `json:"titel"`
+	Date        string `json:"date"`
+	Topic       string `json:"topic"`
+	Description string `json:"description"`
+	Details     string `json:"details"`
 }
 
 type Abstimmung struct {

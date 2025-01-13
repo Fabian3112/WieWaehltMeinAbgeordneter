@@ -26,6 +26,9 @@ func SetupRoutes() *mux.Router {
 	router.HandleFunc("/api/abstimmungen", controllers.GetAbstimmungen).Methods("GET")
 	router.HandleFunc("/api/abstimmungen/{id}", controllers.GetAbstimmungByID).Methods("GET")
 	router.HandleFunc("/api/abstimmungen", controllers.CreateAbstimmung).Methods("POST")
+
+	router.HandleFunc("/api/abstimmungen/multi", controllers.CreateAbstimmungMulti).Methods("POST")
+
 	//router.HandleFunc("/api/users/{id}", controllers.UpdateUser).Methods("PUT")
 	//router.HandleFunc("/api/users/{id}", controllers.DeleteUser).Methods("DELETE")
 

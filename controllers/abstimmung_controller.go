@@ -44,3 +44,19 @@ func CreateAbstimmung(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 }
+
+func CreateAbstimmungMulti(w http.ResponseWriter, r *http.Request) {
+
+	decoder := json.NewDecoder(r.Body)
+	var abstimmungen []models.Abstimmung_put
+	err := decoder.Decode(&abstimmungen)
+	if err != nil {
+		panic(err)
+	}
+	for i := 0; i < len(abstimmungen); i++ {
+		abstimmung := abstimmungen[i]
+		models.PutAbstimmung(abstimmung)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+}

@@ -11,7 +11,7 @@ func GetGesetze() []Gesetz {
 	// Loop through rows, using Scan to assign column data to struct fields.
 	for rows.Next() {
 		var gesetz Gesetz
-		err := rows.Scan(&gesetz.ID, &gesetz.Date, &gesetz.Titel)
+		err := rows.Scan(&gesetz.ID, &gesetz.Date, &gesetz.Titel, &gesetz.Topic, &gesetz.Description, &gesetz.Details)
 		if err != nil {
 			panic(err)
 		}
@@ -30,7 +30,7 @@ func GesetzById(id int64) Gesetz {
 	}
 	defer rows.Close()
 	rows.Next()
-	err = rows.Scan(&gesetz.ID, &gesetz.Date, &gesetz.Titel)
+	err = rows.Scan(&gesetz.ID, &gesetz.Date, &gesetz.Titel, &gesetz.Topic, &gesetz.Description, &gesetz.Details)
 
 	if err != nil {
 		panic(err)
@@ -41,7 +41,7 @@ func GesetzById(id int64) Gesetz {
 
 func PutGesetz(gesetz Gesetz_put) {
 
-	rows, err := db.Query("INSERT INTO Gesetz (titel,date) VALUES (?,?)", gesetz.Titel, gesetz.Date)
+	rows, err := db.Query("INSERT INTO Gesetz (titel,date,topic,description,details) VALUES (?,?,?,?,?)", gesetz.Titel, gesetz.Date, gesetz.Topic, gesetz.Description, gesetz.Details)
 
 	if err != nil {
 		panic(err)
